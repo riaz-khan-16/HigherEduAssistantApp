@@ -1,0 +1,4 @@
+Ticket 1: Make query from HTML Pagee
+Ticket 2: Design the HTML Pagee
+Ticket 3: Generate output in the same Pagee
+Ticket 4: Design the training Pagee
