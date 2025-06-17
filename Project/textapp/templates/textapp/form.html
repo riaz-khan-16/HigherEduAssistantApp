@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to File</title>
+</head>
+<body>
+    <h1>Enter Text to Save as File</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    {% if message %}
+        <p style="color: green;">{{ message }}</p>
+    {% endif %}
+</body>
+</html>
