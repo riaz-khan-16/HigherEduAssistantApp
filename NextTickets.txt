@@ -1,5 +1,5 @@
-Ticket 1: Make query from HTML Pagee
-Ticket 2: Design the HTML Pagee
-Ticket 3: Generate output in the same Pagee
-Ticket 4: Design the training Pagee
+Ticket 1: Make query from HTML Pagee [Completed]
+Ticket 2: Design the HTML Pagee [Completed]
+Ticket 3: Generate output in the same Pagee [Completed]
+Ticket 4: Design the training Pagee [Completed]
 Ticket 5: Use Object Oriented Programming to moduler code
