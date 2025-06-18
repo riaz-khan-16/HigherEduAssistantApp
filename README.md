@@ -1,11 +1,7 @@
 
 # HigherEduAssistantApp
 
-**HigherEduAssistantApp** is an LLM-powered web application built to help individuals seeking higher education information — especially those applying to universities in the United States. 
-
-It uses real-world experiences shared in the Facebook group [Nextop USA](https://www.facebook.com/groups/nextopusa), where users discuss their application journeys for MS and PhD programs. These posts are converted into a searchable vector database and combined with a large language model to allow users to ask questions and receive relevant, experience-based answers.
-
----
+An LLM-based web application that helps students find information about MS and PhD programs in the United States. The app is built with Django and uses real posts from the “Nextop USA” Facebook group. These posts are turned into vector data using ChromaDB. I used Cohere’s large language model with LangChain to allow users to ask questions in natural language. The system finds similar posts and gives helpful answers using a retrieval-augmented generation (RAG) approach. This project shows how LLMs and vector databases can be used to solve real problems in education.
 
 ## Features
 
