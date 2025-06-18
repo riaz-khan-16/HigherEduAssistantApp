@@ -12,6 +12,7 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.llms import Cohere
 from langchain_core.documents import Document
+from django.http import HttpResponse
 
 
 
@@ -188,3 +189,69 @@ def add_new_doc(request):
     else:
         form = TextForm()
     return render(request, 'textapp/form.html', {'form': form, 'message': message})
+
+
+def ask(query):
+        # Load environment and API key
+        load_dotenv()
+        cohere_api_key = os.getenv("cohere_api_key")
+
+        # Re-initialize the same embedding model used when vector store was created
+        embedding_model = CohereEmbeddings(
+            model="embed-multilingual-v3.0",
+            cohere_api_key=cohere_api_key
+        )
+
+        # Load the persisted Chroma vector store
+        vectorstore = Chroma(
+            persist_directory="chroma_db",
+            embedding_function=embedding_model
+        )
+
+
+        print("Vectored Store Loaded Successfully!")
+
+        #load LLM
+
+        llm = Cohere(
+            model="command-r-plus",  # Best for multilingual and complex queries
+            cohere_api_key=cohere_api_key,
+            temperature=0.3,
+            max_tokens=300,
+        )
+
+        print("LLM Loaded successfully!")
+
+        #Make retriever
+        qa_chain = RetrievalQA.from_chain_type(
+            llm=llm,
+            retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
+            return_source_documents=True,
+            chain_type="stuff"  # You can also try "map_reduce" or "refine"
+        )
+
+
+        print("Retriever has be made successfully!")
+
+        response = qa_chain(query)
+
+        return response
+
+
+def getQuery(request):
+    name = ''
+    llm_response=''
+    submitted = False
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        submitted = True
+        llm_response=ask(name)
+        llm_response=llm_response['result']
+
+    return render(request, 'textapp/getQuery.html', {
+        'name': name,
+        'submitted': submitted,
+        'response':llm_response
+    })
+

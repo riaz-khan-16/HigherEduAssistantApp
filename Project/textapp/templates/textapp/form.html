@@ -1,18 +1,86 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Text to File</title>
+    <meta charset="UTF-8">
+    <title>Add New Information to Your Vector Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px 40px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Style Django fields if needed */
+        form p {
+            margin-bottom: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter Text to Save as File</h1>
+
+<div class="container">
+    <h1>Add New Information to Your Vector Database</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
+
     {% if message %}
-        <p style="color: green;">{{ message }}</p>
+        <div class="message">{{ message }}</div>
     {% endif %}
+</div>
+
 </body>
 </html>
