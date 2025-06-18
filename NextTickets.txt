@@ -3,3 +3,5 @@ Ticket 2: Design the HTML Pagee [Completed]
 Ticket 3: Generate output in the same Pagee [Completed]
 Ticket 4: Design the training Pagee [Completed]
 Ticket 5: Use Object Oriented Programming to moduler code
+Ticket 6: Collect Posts and Add to the data base
+
